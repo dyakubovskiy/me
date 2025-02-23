@@ -1,0 +1,53 @@
+{
+  "name": "boilerplate",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build",
+    "lint:oxlint": "oxlint . --fix -D correctness --ignore-path .gitignore",
+    "lint:eslint": "eslint . --fix",
+    "lint": "run-s lint:*",
+    "format": "prettier --write src/",
+    "fsd:watch": "npx steiger ./src --watch",
+    "dev:fsd": "run-p dev fsd:watch"
+  },
+  "dependencies": {
+    "@vueuse/core": "^12.7.0",
+    "es-toolkit": "^1.32.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node22": "^22.0.0",
+    "@types/eslint-config-prettier": "^6.11.3",
+    "@types/node": "^22.13.4",
+    "@typescript-eslint/parser": "^8.24.1",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "@vue/eslint-config-typescript": "^14.4.0",
+    "@vue/tsconfig": "^0.7.0",
+    "eslint": "^9.21.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-oxlint": "^0.15.11",
+    "eslint-plugin-vue": "^9.32.0",
+    "globals": "^16.0.0",
+    "jiti": "^2.4.2",
+    "npm-run-all2": "^7.0.2",
+    "oxlint": "^0.15.10",
+    "prettier": "^3.5.1",
+    "sass-embedded": "^1.85.0",
+    "steiger": "^0.5.5",
+    "typescript": "~5.7.3",
+    "typescript-eslint": "^8.24.1",
+    "vite": "^6.1.0",
+    "vite-plugin-vue-devtools": "^7.7.2",
+    "vue-eslint-parser": "^9.4.3",
+    "vue-tsc": "^2.2.2"
+  },
+  "license": "MIT"
+}
