@@ -1,3 +1,5 @@
+@use '../fonts/fonts.scss';
+
 html,
 body,
 div,
@@ -122,6 +124,7 @@ body {
   height: 100%;
   width: 100%;
   line-height: 1;
+  font-family: 'Rounded-Regular', sans-serif;
 }
 
 #app {
@@ -135,7 +138,7 @@ select,
 button,
 a {
   font:
-    1.6rem Inter,
+    1.6rem 'Rounded-Regular',
     Arial,
     sans-serif;
   line-height: 1;
@@ -144,4 +147,16 @@ a {
   &:focus {
     outline: none;
   }
+}
+
+strong,
+b,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Rounded-Bold', Arial, sans-serif;
+  font-weight: bold;
 }
