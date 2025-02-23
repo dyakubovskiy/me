@@ -116,6 +116,8 @@ html {
   height: 100%;
   box-sizing: border-box;
   font-size: 62.5%;
+  background: var(--background);
+  color: var(--text-color);
 }
 
 body {
@@ -123,6 +125,7 @@ body {
   width: 100%;
   line-height: 1;
   font-family: 'Rounded-Regular', sans-serif;
+  color: var(--text-color);
 }
 
 #app {
@@ -154,7 +157,15 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+.bold {
   font-family: 'Rounded-Bold', Arial, sans-serif;
   font-weight: bold;
+}
+
+.container {
+  max-width: 76.8rem;
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0 auto;
 }
