@@ -1,8 +1,25 @@
 :root {
+  --background: #ede1db;
+  --background-secondary: #ffffff5c;
+  --accent: #2c7a7b;
+  --accent-hover: #e6fffa;
+  --text-color: #141817;
+  --border-color: #414141;
+  --header-background: #e1e1e140;
+  --contrast: #ffffff;
+
+  --purple: #805ad5;
+  --orange: #fbd38d;
+
   &.dark {
-    --background: #18181b;
+    --background: #202023;
+    --background-secondary: #ffffff14;
     --text-color: #eaeaea;
     --icon: #eaeaea;
     --contrast: #000000;
+    --border-color: #414141;
+    --header-background: #20202380;
+    --accent: #81e6d9;
+    --accent-hover: #81e6d91f;
   }
 }
