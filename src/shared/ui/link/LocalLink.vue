@@ -1,5 +1,7 @@
 <template>
-  <RouterLink :to="{ name: pathName }">
+  <RouterLink
+    :to="{ name: pathName }"
+    class="localLink">
     <slot>
       {{ linkText }}
     </slot>
@@ -18,7 +20,7 @@ defineProps<Props>()
 </script>
 
 <style scoped lang="scss">
-a {
+.localLink {
   color: var(--text-color);
 }
 </style>
