@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-type IconColor = 'default' | 'contrast'
+type IconColor = 'default' | 'contrast' | 'accent'
 type IconSize = 'small' | 'medium' | 'large'
 
 export interface IconProps {
@@ -32,6 +32,10 @@ const { iconColor = 'default', iconSize = 'medium' } = defineProps<IconProps>()
 
   &.contrast {
     color: var(--contrast);
+  }
+
+  &.accent {
+    color: var(--accent);
   }
 
   &.small {
