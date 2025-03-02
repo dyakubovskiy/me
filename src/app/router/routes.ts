@@ -7,6 +7,11 @@ export const routes: Array<RouteRecordRaw> = [
     component: () => import('@/pages/main')
   },
   {
+    path: '/works',
+    name: 'works',
+    component: () => import('@/pages/works')
+  },
+  {
     path: '/:pathMatch(.*)*',
     redirect: { name: 'Main' }
   }

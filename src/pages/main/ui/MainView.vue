@@ -20,6 +20,11 @@
       <div class="desc">
         {{ about }}
       </div>
+      <LocalLink
+        pathName="works"
+        class="worksLink">
+        Мои работы
+      </LocalLink>
       <h3 class="sectionTitle">Bio</h3>
       <div class="bio">
         <div
@@ -60,6 +65,7 @@
 
 <script setup lang="ts">
 import { VIcon } from '@/shared/ui/icon'
+import { LocalLink } from '@/shared/ui/link'
 import { greetings, developer, profession, about, bio, socials } from './data'
 import { InteractiveModel } from './modelViewer'
 </script>
@@ -166,6 +172,18 @@ import { InteractiveModel } from './modelViewer'
   hyphens: auto;
   line-height: 2.4rem;
   margin-bottom: 0.8rem;
+}
+
+.worksLink {
+  margin: 0 auto;
+  background: var(--accent);
+  color: var(--contrast);
+  padding: 1.2rem 0.8rem;
+  border-radius: 8px;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .bio {
