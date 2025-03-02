@@ -7,6 +7,15 @@
         <VIcon iconId="terminal" />
         dyakubovskiy
       </LocalLink>
+      <div class="nav">
+        <LocalLink
+          v-for="{ name, pathName } in NAV_LINKS"
+          :key="pathName"
+          :pathName
+          class="navLink">
+          {{ name }}
+        </LocalLink>
+      </div>
       <Transition name="switch">
         <ButtonIcon
           :key="themeIcon"
@@ -32,6 +41,13 @@ import { VIcon } from '@/shared/ui/icon'
 import { LocalLink } from '@/shared/ui/link'
 import { ButtonIcon } from '@/shared/ui/buttons'
 
+const NAV_LINKS = [
+  {
+    name: 'Работы',
+    pathName: 'works'
+  }
+]
+
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
 
@@ -55,6 +71,7 @@ const themeBackground: Ref<string> = computed(() => (isDark.value ? 'orange' : '
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.8rem;
   max-width: 75.6rem;
   width: 100%;
   padding: 0.8rem;
@@ -72,6 +89,18 @@ const themeBackground: Ref<string> = computed(() => (isDark.value ? 'orange' : '
     .icon {
       transform: rotate(-15deg);
     }
+  }
+}
+
+.nav {
+  flex: 1;
+}
+
+.navLink {
+  padding: 0.8rem;
+
+  &:hover {
+    color: var(--accent);
   }
 }
 
