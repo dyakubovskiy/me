@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'Rounded-Bold';
   src:
-    url('./MPLUSRounded1c-Bold.woff2') format('woff2'),
-    url('./MPLUSRounded1c-Bold.woff') format('woff');
+    url('../fonts/MPLUSRounded1c-Bold.woff2') format('woff2'),
+    url('../fonts/MPLUSRounded1c-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -11,8 +11,8 @@
 @font-face {
   font-family: 'Rounded-Regular';
   src:
-    url('./MPLUSRounded1c-Regular.woff2') format('woff2'),
-    url('./MPLUSRounded1c-Regular.woff') format('woff');
+    url('../fonts/MPLUSRounded1c-Regular.woff2') format('woff2'),
+    url('../fonts/MPLUSRounded1c-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
