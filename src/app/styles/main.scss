@@ -140,10 +140,10 @@ button,
 a {
   font:
     1.6rem 'Rounded-Regular',
-    Arial,
     sans-serif;
   line-height: 1;
   text-decoration: none;
+  color: var(--text-color);
 
   &:focus {
     outline: none;
@@ -159,7 +159,7 @@ h4,
 h5,
 h6,
 .bold {
-  font-family: 'Rounded-Bold', Arial, sans-serif;
+  font-family: 'Rounded-Bold', sans-serif;
   font-weight: bold;
 }
 
