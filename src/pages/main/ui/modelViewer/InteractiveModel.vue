@@ -43,14 +43,12 @@ const initScene = (): void => {
   setSceneBackground()
 }
 
-// Инициализация камеры
 const INITIAL_CAMERA_POSITION_Z = 3
-function initCamera() {
+const initCamera = (): void => {
   camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000)
   camera.position.z = INITIAL_CAMERA_POSITION_Z
 }
 
-// Инициализация рендерера
 const SCENE_SIZE = {
   small: 280,
   medium: 480,
@@ -65,7 +63,7 @@ const renderSize: Ref<number> = computed(() => {
   return SCENE_SIZE.large
 })
 
-function initRenderer() {
+const initRenderer = (): void => {
   if (!modelViewerRef.value) return
 
   renderer = new THREE.WebGLRenderer({ antialias: true })
@@ -73,15 +71,13 @@ function initRenderer() {
   modelViewerRef.value.appendChild(renderer.domElement)
 }
 
-// Добавление освещения
-function addLighting() {
+const addLighting = (): void => {
   const light = new THREE.DirectionalLight(0xffffff, 1)
   light.position.set(1, 1, 1).normalize()
   scene.add(light)
 }
 
-// Инициализация OrbitControls
-function initOrbitControls() {
+const initOrbitControls = (): void => {
   if (!modelViewerRef.value) return
 
   controls = new OrbitControls(camera, renderer.domElement)
@@ -91,25 +87,22 @@ function initOrbitControls() {
   controls.maxPolarAngle = Math.PI / 2
 }
 
-// Обработка изменения размера окна
-function onWindowResize() {
+const onWindowResize = (): void => {
   if (!modelViewerRef.value) return
 
   camera.aspect = modelViewerRef.value.clientWidth / modelViewerRef.value.clientHeight
   camera.updateProjectionMatrix()
   renderer.setSize(modelViewerRef.value.clientWidth, modelViewerRef.value.clientHeight)
 }
-
 useEventListener(window, 'resize', onWindowResize)
 
-// Анимация
 const ROTATION_SPEED = 0.1
 const MIN_ROTATION_SPEED = 0.001
 const DECELERATION = 0.99
 
 const rotationSpeed: Ref<number> = ref(ROTATION_SPEED)
 
-function animate() {
+const animate = (): void => {
   requestAnimationFrame(animate)
 
   if (model) {
@@ -121,11 +114,10 @@ function animate() {
   renderer.render(scene, camera)
 }
 
-// Загрузка модели
 const MODEL_PATH = './threeJs/model/scene.gltf'
 const isLoading: Ref<boolean> = ref(true)
 
-function loadModel() {
+const loadModel = (): void => {
   const loader = new GLTFLoader()
   loader.load(
     MODEL_PATH,
@@ -137,8 +129,8 @@ function loadModel() {
     },
     undefined,
     (error) => {
-      console.error('Error loading model:', error)
       isLoading.value = false
+      throw new Error(`Error loading model: ${error}`)
     }
   )
 }
@@ -178,10 +170,10 @@ onMounted(() => {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50px;
-  height: 50px;
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #3498db;
+  width: 6rem;
+  height: 6rem;
+  border: 2px solid var(--border-color);
+  border-top: 2px solid var(--border-accent);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
