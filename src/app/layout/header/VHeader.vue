@@ -7,27 +7,31 @@
         <VIcon iconId="terminal" />
         dyakubovskiy
       </LocalLink>
-      <div class="nav">
-        <LocalLink
-          v-for="{ name, pathName } in NAV_LINKS"
-          :key="pathName"
-          :pathName
-          class="navLink">
-          {{ name }}
-        </LocalLink>
-      </div>
-      <Transition name="switch">
+      <NavLinks v-if="!isMedium" />
+      <div class="buttons">
+        <Transition name="switch">
+          <ButtonIcon
+            :key="themeIcon"
+            :iconId="themeIcon"
+            iconSize="small"
+            iconColor="contrast"
+            :style="{
+              background: `var(--${themeBackground})`
+            }"
+            @click="toggleDark" />
+        </Transition>
         <ButtonIcon
-          :key="themeIcon"
-          :iconId="themeIcon"
-          iconSize="small"
-          iconColor="contrast"
-          :style="{
-            background: `var(--${themeBackground})`
-          }"
-          class="themeButton"
-          @click="toggleDark" />
-      </Transition>
+          v-if="isMedium"
+          ref="burgerRef"
+          iconId="menu"
+          class="burger"
+          @click="toggleDropdown" />
+      </div>
+      <NavLinks
+        v-if="isMedium && isDropdownActive"
+        ref="dropdownRef"
+        isDropdown
+        @click="closeDropdown" />
     </header>
   </div>
 </template>
@@ -35,24 +39,36 @@
 <script setup lang="ts">
 import type { Ref } from 'vue'
 
-import { computed } from 'vue'
+import { ref, computed, useTemplateRef } from 'vue'
 import { useDark, useToggle } from '@vueuse/core'
-import { VIcon } from '@/shared/ui/icon'
-import { LocalLink } from '@/shared/ui/link'
+import { useScreenWidth } from '@/shared/lib/screenWidth'
+import { useClickOutside } from '@/shared/lib/dom'
 import { ButtonIcon } from '@/shared/ui/buttons'
+import { LocalLink } from '@/shared/ui/link'
+import { VIcon } from '@/shared/ui/icon'
+import NavLinks from './NavLinks.vue'
 
-const NAV_LINKS = [
-  {
-    name: 'Работы',
-    pathName: 'works'
-  }
-]
+const { isMedium } = useScreenWidth()
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
 
+const isDropdownActive: Ref<boolean> = ref(false)
+const toggleDropdown = useToggle(isDropdownActive)
+
 const themeIcon: Ref<string> = computed(() => (isDark.value ? 'sun' : 'moon'))
 const themeBackground: Ref<string> = computed(() => (isDark.value ? 'orange' : 'purple'))
+
+const closeDropdown = (): void => {
+  isDropdownActive.value = false
+}
+
+const dropdownRef = useTemplateRef('dropdownRef')
+const burgerRef = useTemplateRef('burgerRef')
+const dropdownElement: Ref<Nullable<HTMLElement>> = computed(() => dropdownRef.value?.$el)
+const burgerElement: Ref<HTMLElement> = computed(() => burgerRef.value?.$el)
+
+useClickOutside(dropdownElement, closeDropdown, [burgerElement])
 </script>
 
 <style scoped lang="scss">
@@ -92,22 +108,20 @@ const themeBackground: Ref<string> = computed(() => (isDark.value ? 'orange' : '
   }
 }
 
-.nav {
-  flex: 1;
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
 }
 
-.navLink {
-  padding: 0.8rem;
-
-  &:hover {
-    color: var(--accent);
-  }
-}
-
-.themeButton {
+.buttonIcon {
   width: 4rem;
   height: 4rem;
   border-radius: 8px;
+}
+
+.burger {
+  border: 1px solid #fff;
 }
 
 .icon {
