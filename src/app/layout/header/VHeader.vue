@@ -63,13 +63,10 @@ const closeDropdown = (): void => {
   isDropdownActive.value = false
 }
 
-const dropdownRef = useTemplateRef('dropdownRef')
-const burgerRef = useTemplateRef('burgerRef')
+const dropdownRef = useTemplateRef<InstanceType<typeof NavLinks>>('dropdownRef')
+const burgerRef = useTemplateRef<InstanceType<typeof ButtonIcon>>('burgerRef')
 const dropdownElement: Ref<Nullable<HTMLElement>> = computed(() => dropdownRef.value?.$el ?? null)
-const burgerElement: Ref<HTMLElement> = computed(() => {
-  if (!burgerRef.value) throw new Error('burgerRef is not defined')
-  return burgerRef.value.$el
-})
+const burgerElement: Ref<Nullable<HTMLElement>> = computed(() => burgerRef.value?.$el ?? null)
 
 useClickOutside(dropdownElement, closeDropdown, [burgerElement])
 </script>
