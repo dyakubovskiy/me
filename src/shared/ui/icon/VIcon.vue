@@ -1,8 +1,9 @@
 <template>
   <svg
     class="icon"
-    :class="[iconColor, iconSize]">
-    <use v-bind="{ 'xlink:href': `/sprite.svg#${iconId}` }" />
+    :class="[iconColor, iconSize]"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <use :href="`/sprite.svg#${iconId}`" />
   </svg>
 </template>
 
