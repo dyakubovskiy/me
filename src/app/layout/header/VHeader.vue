@@ -143,7 +143,6 @@ useClickOutside(dropdownElement, closeDropdown, [burgerElement])
 .switch-leave-to {
   opacity: 0;
   position: absolute;
-  right: 0.8rem;
   transform: translateY(100%);
 }
 </style>
