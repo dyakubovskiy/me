@@ -23,6 +23,16 @@ const bio = [
     date: '2024',
     present: false,
     content: 'Выступил с докладом на конференции "Старт в IT"'
+  },
+  {
+    date: '2025',
+    present: false,
+    content: 'Принимал участие в TulaHack в роли эксперта'
+  },
+  {
+    date: '2025',
+    present: false,
+    content: 'Окончил Тульский институт ВГУЮ (РПА Минюста России)'
   }
 ]
 
@@ -33,7 +43,7 @@ const socials = [
     link: 'https://github.com/dyakubovskiy'
   },
   {
-    name: '@dev_cube',
+    name: '@yakubovskuy',
     iconId: 'telegram',
     link: 'https://t.me/dev_cube'
   }

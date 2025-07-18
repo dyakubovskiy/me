@@ -49,4 +49,4 @@ MIT
 **Дмитрий Якубовский**
 
 - GitHub: [@dyakubovskiy](https://github.com/dyakubovskiy)
-- Telegram: [@dev_cube](https://t.me/dev_cube)
+- Telegram: [@yakubovskuy](https://t.me/dev_cube)
