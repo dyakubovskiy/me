@@ -45,7 +45,7 @@ const socials = [
   {
     name: '@yakubovskuy',
     iconId: 'telegram',
-    link: 'https://t.me/dev_cube'
+    link: 'https://t.me/yakubovskuy'
   }
 ]
 
